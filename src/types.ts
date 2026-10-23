@@ -1,0 +1,10 @@
+export type User = { id: string; name: string; email: string; company: string; isDemo: boolean }
+export type Client = { id: string; name: string; company: string; email: string; phone: string; segment: string; notes: string; createdAt?: string }
+export type Stage = 'lead' | 'proposal' | 'negotiation' | 'won' | 'lost'
+export type Deal = { id: string; title: string; clientId: string; amount: number; recurrence: 'monthly' | 'one_time'; stage: Stage; expectedClose: string; notes: string; createdAt?: string; updatedAt?: string }
+export type ProposalItem = { description: string; quantity: number; unitPrice: number }
+export type Proposal = { id: string; title: string; clientId: string; dealId?: string; items: ProposalItem[]; message: string; validUntil: string; status: 'draft' | 'sent' | 'accepted' | 'declined'; publicToken: string; total: number; acceptedAt?: string; acceptedBy?: string; createdAt?: string }
+export type Task = { id: string; title: string; dueDate: string; done: boolean; clientId?: string; dealId?: string; createdAt?: string }
+export type Settings = { annualGoal: number; monthlyTicket: number }
+export type Workspace = { user: User; clients: Client[]; deals: Deal[]; proposals: Proposal[]; tasks: Task[]; settings: Settings }
+export type Page = 'overview' | 'pipeline' | 'clients' | 'proposals' | 'tasks' | 'goal' | 'settings'
